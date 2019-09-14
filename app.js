@@ -4,6 +4,8 @@ app.use(express.json());
 
 const s3 = require('./services/s3');
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/getPresignedUrlGET', (req, res) => {
     const presignedUrlGET = s3.getSignedUrl('getObject', {
         Bucket: process.env.BUCKET,
