@@ -1,5 +1,8 @@
 const express = require('express');
+const urlUtils = require('./utils/url');
+
 const app = express();
+
 app.use(express.json());
 
 const s3 = require('./services/s3');
@@ -55,7 +58,11 @@ app.get('/getPublicUrl', (req, res) => {
         throw new Error('Filename is missing');
     }
 
-    const PUBLIC_URL = `https://${process.env.BUCKET}.s3-${process.env.REGION}.amazonaws.com/${filename}`;
+    const PUBLIC_URL = urlUtils.getPublicUrl(
+        process.env.BUCKET,
+        process.env.REGION,
+        filename
+    );
 
     res.json(PUBLIC_URL);
 });
