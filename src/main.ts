@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import {NestExpressApplication} from '@nestjs/platform-express';
-import S3Module from './core/s3.module';
+import S3Module from './core/S3/s3.module';
 
 const bootstrap = async () => {
     const app = await NestFactory.create<NestExpressApplication>(S3Module);

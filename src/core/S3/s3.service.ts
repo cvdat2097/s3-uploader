@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { S3 } from 'aws-sdk';
 
-import { getPublicUrl } from '../utils/url';
+import { getPublicUrl } from '../../utils/url';
 
 const s3 = new S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
