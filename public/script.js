@@ -30,7 +30,7 @@ const getUploadEndpointFields = async filename => {
     return res;
 };
 
-const uploadFile = (file, uploadUrl, s3PostFields) => {
+const uploadFile = async (file, uploadUrl, s3PostFields) => {
     const formData = new FormData();
 
     formData.append('key', s3PostFields.key);
@@ -41,7 +41,7 @@ const uploadFile = (file, uploadUrl, s3PostFields) => {
     });
     formData.append('file', file);
 
-    axios.post(uploadUrl, formData, {
+    await axios.post(uploadUrl, formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
         },
